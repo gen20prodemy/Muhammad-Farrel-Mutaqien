@@ -11,7 +11,8 @@ public class Main{
         System.out.println("3. Arithmetic Exception");
         System.out.println("4. Array Index Out Of Bounds");
         System.out.println("5. File Not Found");
-        System.out.println("6. Finally");
+        System.out.println("6. Custom");
+        System.out.println("7. Finally");
         System.out.print("Pilih Jenis : ");
         menu = scan.nextInt();
         System.out.println(" ");

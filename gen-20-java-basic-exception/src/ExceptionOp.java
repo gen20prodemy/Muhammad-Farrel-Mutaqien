@@ -72,6 +72,16 @@ public class ExceptionOp {
 
             case 6:
                 System.out.println("================================================");
+                System.out.print("Berikut tuliskan angka positif : ");
+                Input1 = scan.nextInt();
+                System.out.println(" ");
+
+                CustomEx(Input1);
+
+                Restart(menu, scan);
+
+            case 7:
+                System.out.println("================================================");
                 System.out.println(" ");
 
                 Finally(menu, scan);
@@ -148,6 +158,7 @@ public class ExceptionOp {
         System.out.println("================================================\n");
     }
 
+
     public static void Finally(int menu, Scanner scan){
         try{
             System.exit(0);
@@ -156,5 +167,23 @@ public class ExceptionOp {
             System.out.println("Contoh finally!");
         }
         System.out.println("================================================\n");
+    }
+
+    public static void CustomEx(int Input1){
+        try {
+            if (Input1 < 0) {
+                throw new CustomException("Input tidak boleh negatif");
+            } else {
+                System.out.println("Input adalah bilangan bulat");
+            }
+        }catch (CustomException e){
+            System.out.println("Input salah");
+        }
+        System.out.println("================================================\n");
+    }
+}
+class CustomException extends Exception{
+    public CustomException(String message){
+        super(message);
     }
 }
