@@ -1,17 +1,11 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashSet;
 import java.util.Set;
 
 public class HashSetCollection {
-        public static HashSet<listDataKaryawan> setKaryawan = new HashSet<>();
-    public static void main(String[] args) {
+        public static HashSet<ListDataKaryawan> setKaryawan = new HashSet<>();
 
-//        DataDefault(setKaryawan);
-        Beranda();
-    }
-
-    public static void Beranda(){
+    public static void beranda(){
         Scanner scan = new Scanner(System.in);
         int menu = 0;
 
@@ -31,45 +25,45 @@ public class HashSetCollection {
         if (menu!=0){
             switch (menu) {
                 case 1:
-                    TambahKaryawan(setKaryawan, scan, menu);
+                    TambahKaryawan(setKaryawan, scan);
                     break;
 
                 case 2:
-                    lihatList(setKaryawan, menu);
+                    lihatList(setKaryawan);
                     break;
 
                 case 3:
-                    cariKaryawan(setKaryawan,menu, scan);
+                    cariKaryawan(setKaryawan, scan);
                     break;
 
                 case 4:
-                    DataDefault(setKaryawan);
+                    dataDefault(setKaryawan);
                     System.out.println("Data berhasil ditambahkan!");
-                    Beranda();
+                    beranda();
                     break;
 
                 case 5:
-                    listCollection.listKaryawan.addAll(setKaryawan);
+                    ListCollection.listKaryawan.addAll(setKaryawan);
                     System.out.println("Data berhasil ditambahkan!");
-                    Beranda();
+                    beranda();
                     break;
 
                 case 6:
-                    Main.Beranda();
+                    Main.beranda();
                     break;
             }
         }
     }
 
-    public static void DataDefault(HashSet<listDataKaryawan> listdef) {
-        listDataKaryawan dataKaryawan1 = new listDataKaryawan(425, "Muhammad Kholbi", "IT");
-        listDataKaryawan dataKaryawan2 = new listDataKaryawan(456, "Rossa", "Marketing");
-        listDataKaryawan dataKaryawan3 = new listDataKaryawan(136, "Fulki Mamduh", "Marketing");
-        listDataKaryawan dataKaryawan4 = new listDataKaryawan(631, "Ahmad", "HR");
-        listDataKaryawan dataKaryawan5 = new listDataKaryawan(628, "Muhammad Javier", "IT");
-        listDataKaryawan dataKaryawan6 = new listDataKaryawan(912, "Michael Sunardi", "Management");
-        listDataKaryawan dataKaryawan7 = new listDataKaryawan(395, "Wulan Mulawati", "Management");
-        listDataKaryawan dataKaryawan8 = new listDataKaryawan(852, "Mahbub Amirudin", "IT");
+    public static void dataDefault(HashSet<ListDataKaryawan> listdef) {
+        ListDataKaryawan dataKaryawan1 = new ListDataKaryawan(425, "Muhammad Kholbi", "IT");
+        ListDataKaryawan dataKaryawan2 = new ListDataKaryawan(456, "Rossa", "Marketing");
+        ListDataKaryawan dataKaryawan3 = new ListDataKaryawan(136, "Fulki Mamduh", "Marketing");
+        ListDataKaryawan dataKaryawan4 = new ListDataKaryawan(631, "Ahmad", "HR");
+        ListDataKaryawan dataKaryawan5 = new ListDataKaryawan(628, "Muhammad Javier", "IT");
+        ListDataKaryawan dataKaryawan6 = new ListDataKaryawan(912, "Michael Sunardi", "Management");
+        ListDataKaryawan dataKaryawan7 = new ListDataKaryawan(395, "Wulan Mulawati", "Management");
+        ListDataKaryawan dataKaryawan8 = new ListDataKaryawan(852, "Mahbub Amirudin", "IT");
 
         listdef.add(dataKaryawan1);
         listdef.add(dataKaryawan2);
@@ -81,19 +75,19 @@ public class HashSetCollection {
         listdef.add(dataKaryawan8);
     }
 
-    public static void Restart(int menu, HashSet<listDataKaryawan> setKaryawan){
+    public static void restart(){
         Scanner scan2 = new Scanner(System.in);
-        menu = 0;
+        int menu = 0;
         System.out.print("\n1. Keluar\n2. Kembali ke menu utama\nPilih : ");
         int temp = scan2.nextInt();
         System.out.print("\n");
 
         if (temp == 2){
-            Beranda();
+            beranda();
         }
     }
 
-    public static void TambahKaryawan(HashSet<listDataKaryawan> AddSet, Scanner scan, int menu){
+    public static void TambahKaryawan(HashSet<ListDataKaryawan> AddSet, Scanner scan){
         int jumlahKaryawan = 0;
 
         System.out.println("\nBerikut adalah pengisian untuk data karyawan perusahaan 'A'\ndiharapkan untuk mengisi data karyawan dengan sesuai\n");
@@ -114,40 +108,40 @@ public class HashSetCollection {
             System.out.print("Masukan departemen : ");
             String dept = scan.nextLine();
 
-            AddSet.add(new listDataKaryawan(id, nama, dept));
+            AddSet.add(new ListDataKaryawan(id, nama, dept));
         }
 
         System.out.println("Data berhasil ditambahkan!");
-        Restart(menu, AddSet);
+        restart();
     }
 
-    public static void lihatList(HashSet<listDataKaryawan> setKaryawan, int menu){
-        for(listDataKaryawan dataKaryawan : setKaryawan){
+    public static void lihatList(HashSet<ListDataKaryawan> setKaryawan){
+        for(ListDataKaryawan dataKaryawan : setKaryawan){
             System.out.println(dataKaryawan+"\n");
         }
 
-        Restart(menu, setKaryawan);
+        restart();
     }
 
-    public static void cariKaryawan(HashSet<listDataKaryawan> setKaryawan, int menu, Scanner scan) {
+    public static void cariKaryawan(HashSet<ListDataKaryawan> setKaryawan, Scanner scan) {
         System.out.print("Pilih kategori dalam mencari\n1. ID\n2. Nama\n3. Departemen\n4. Keluar\nPilih : ");
         int kategori = scan.nextInt();
         if (kategori == 1) {
             int cariId = scan.nextInt();
 
-            for (listDataKaryawan karyawan : setKaryawan) {
+            for (ListDataKaryawan karyawan : setKaryawan) {
                 System.out.print("Tulis ID karyawan : ");
                 if (karyawan.getId() == cariId) {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, setKaryawan);
+            restart();
         } else if (kategori == 2) {
             System.out.print("Tulis nama karyawan : ");
             scan.nextLine();
             String cariNama = scan.nextLine();
 
-            for (listDataKaryawan karyawan : setKaryawan) {
+            for (ListDataKaryawan karyawan : setKaryawan) {
                 String[] liskar = karyawan.getNama().split(" ");
                 String nama = liskar[0];
 
@@ -155,48 +149,20 @@ public class HashSetCollection {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, setKaryawan);
+            restart();
         } else if (kategori == 3) {
             System.out.print("Tulis nama departemen : ");
             scan.nextLine();
             String cariDept = scan.nextLine();
 
-            for (listDataKaryawan karyawan : setKaryawan) {
+            for (ListDataKaryawan karyawan : setKaryawan) {
                 if (karyawan.getDepartemen().equals(cariDept)) {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, setKaryawan);
+            restart();
         } else {
-            Restart(menu, setKaryawan);
+            restart();
         }
-    }
-}
-
-class HashSetDataKaryawan {
-    private int id;
-    private String nama;
-    private String departemen;
-
-    public HashSetDataKaryawan(int id, String nama, String departemen) {
-        this.id = id;
-        this.nama = nama;
-        this.departemen = departemen;
-    }
-
-    public String toString() {
-        return "==================\nId : " + id + "\nNama : " + nama + "\nDepartemen : " + departemen;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public String getDepartemen() {
-        return departemen;
     }
 }

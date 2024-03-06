@@ -2,23 +2,18 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class listCollection {
-    public static List<listDataKaryawan> listKaryawan = new ArrayList<>();
+public class ListCollection {
+    public static List<ListDataKaryawan> listKaryawan = new ArrayList<>();
 
-    public static void main(String[] args) {
-//        DataDefault(listKaryawan);
-        Beranda();
-    }
-
-    public static void DataDefault(List<listDataKaryawan> listdef) {
-        listDataKaryawan dataKaryawan1 = new listDataKaryawan(425, "Muhammad Kholbi", "IT");
-        listDataKaryawan dataKaryawan2 = new listDataKaryawan(456, "Rossa", "Marketing");
-        listDataKaryawan dataKaryawan3 = new listDataKaryawan(136, "Fulki Mamduh", "Marketing");
-        listDataKaryawan dataKaryawan4 = new listDataKaryawan(631, "Ahmad", "HR");
-        listDataKaryawan dataKaryawan5 = new listDataKaryawan(628, "Muhammad Javier", "IT");
-        listDataKaryawan dataKaryawan6 = new listDataKaryawan(912, "Michael Sunardi", "Management");
-        listDataKaryawan dataKaryawan7 = new listDataKaryawan(395, "Wulan Mulawati", "Management");
-        listDataKaryawan dataKaryawan8 = new listDataKaryawan(852, "Mahbub Amirudin", "IT");
+    public static void dataDefault(List<ListDataKaryawan> listdef) {
+        ListDataKaryawan dataKaryawan1 = new ListDataKaryawan(425, "Muhammad Kholbi", "IT");
+        ListDataKaryawan dataKaryawan2 = new ListDataKaryawan(456, "Rossa", "Marketing");
+        ListDataKaryawan dataKaryawan3 = new ListDataKaryawan(136, "Fulki Mamduh", "Marketing");
+        ListDataKaryawan dataKaryawan4 = new ListDataKaryawan(631, "Ahmad", "HR");
+        ListDataKaryawan dataKaryawan5 = new ListDataKaryawan(628, "Muhammad Javier", "IT");
+        ListDataKaryawan dataKaryawan6 = new ListDataKaryawan(912, "Michael Sunardi", "Management");
+        ListDataKaryawan dataKaryawan7 = new ListDataKaryawan(395, "Wulan Mulawati", "Management");
+        ListDataKaryawan dataKaryawan8 = new ListDataKaryawan(852, "Mahbub Amirudin", "IT");
 
         listdef.add(dataKaryawan1);
         listdef.add(dataKaryawan2);
@@ -30,7 +25,7 @@ public class listCollection {
         listdef.add(dataKaryawan8);
     }
 
-    public static void Beranda(){
+    public static void beranda(){
         Scanner scan = new Scanner(System.in);
         int menu = 0;
 
@@ -39,7 +34,7 @@ public class listCollection {
         System.out.println("2. Melihat list karywan");
         System.out.println("3. Mencari data karyawan");
         System.out.println("4. Tambahkan data default");
-        System.out.println("5. Mengkonversi dari set ke list");
+        System.out.println("5. Mengkonversi dari list ke set");
         System.out.println("6. Kembali ke menu utama");
 
         System.out.print("Pilih : ");
@@ -50,49 +45,49 @@ public class listCollection {
         if (menu!=0){
             switch (menu) {
                 case 1:
-                    TambahKaryawan(listKaryawan, scan, menu);
+                    tambahKaryawan(listKaryawan, scan);
                     break;
 
                 case 2:
-                    lihatList(listKaryawan, menu);
+                    lihatList(listKaryawan);
                     break;
 
                 case 3:
-                    cariKaryawan(listKaryawan,menu, scan);
+                    cariKaryawan(listKaryawan, scan);
                     break;
 
                 case 4:
-                    DataDefault(listKaryawan);
+                    dataDefault(listKaryawan);
                     System.out.println("Data berhasil ditambahkan!");
-                    Beranda();
+                    beranda();
                     break;
 
                 case 5:
                     HashSetCollection.setKaryawan.addAll(listKaryawan);
                     System.out.println("Data berhasil ditambahkan!");
-                    Beranda();
+                    beranda();
                     break;
 
                 case 6:
-                    Main.Beranda();
+                    Main.beranda();
                     break;
             }
         }
     }
 
-    public static void Restart(int menu, List<listDataKaryawan> listKaryawan){
+    public static void restart(){
         Scanner scan2 = new Scanner(System.in);
-        menu = 0;
+        int menu = 0;
         System.out.print("\n1. Keluar\n2. Kembali ke menu utama\nPilih : ");
         int temp = scan2.nextInt();
         System.out.print("\n");
 
         if (temp == 2){
-            Beranda();
+            beranda();
         }
     }
 
-    public static void TambahKaryawan(List<listDataKaryawan> Addlist, Scanner scan, int menu){
+    public static void tambahKaryawan(List<ListDataKaryawan> Addlist, Scanner scan){
         int jumlahKaryawan = 0;
 
         System.out.println("\nBerikut adalah pengisian untuk data karyawan perusahaan 'A'\ndiharapkan untuk mengisi data karyawan dengan sesuai\n");
@@ -113,71 +108,76 @@ public class listCollection {
             System.out.print("Masukan departemen : ");
             String dept = scan.nextLine();
 
-            Addlist.add(new listDataKaryawan(id, nama, dept));
+            Addlist.add(new ListDataKaryawan(id, nama, dept));
         }
 
         System.out.println("Data berhasil ditambahkan!");
-        Restart(menu, Addlist);
+        restart();
     }
 
-    public static void lihatList(List<listDataKaryawan> listKaryawan, int menu){
-        for(listDataKaryawan dataKaryawan : listKaryawan){
+    public static void lihatList(List<ListDataKaryawan> listKaryawan){
+        for(ListDataKaryawan dataKaryawan : listKaryawan){
             System.out.println(dataKaryawan+"\n");
         }
 
-        Restart(menu, listKaryawan);
+        restart();
     }
 
-    public static void cariKaryawan(List<listDataKaryawan> listKaryawan, int menu, Scanner scan) {
+    public static void cariKaryawan(List<ListDataKaryawan> listKaryawan, Scanner scan) {
         System.out.print("Pilih kategori dalam mencari\n1. ID\n2. Nama\n3. Departemen\n4. Keluar\nPilih : ");
         int kategori = scan.nextInt();
         if (kategori == 1) {
             int cariId = scan.nextInt();
 
-            for (listDataKaryawan karyawan : listKaryawan) {
+            for (ListDataKaryawan karyawan : listKaryawan) {
                 System.out.print("Tulis ID karyawan : ");
                 if (karyawan.getId() == cariId) {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, listKaryawan);
+            restart();
         } else if (kategori == 2) {
             System.out.print("Tulis nama karyawan : ");
             scan.nextLine();
             String cariNama = scan.nextLine();
 
-            for (listDataKaryawan karyawan : listKaryawan) {
+            for (ListDataKaryawan karyawan : listKaryawan) {
                 String[] liskar = karyawan.getNama().split(" ");
-                String nama = liskar[0];
 
+                String nama = liskar[0];
+                if (nama.equals(cariNama)) {
+                    System.out.println(karyawan.getNama());
+                }
+
+                nama = liskar[1];
                 if (nama.equals(cariNama)) {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, listKaryawan);
+            restart();
         } else if (kategori == 3) {
             System.out.print("Tulis nama departemen : ");
             scan.nextLine();
             String cariDept = scan.nextLine();
 
-            for (listDataKaryawan karyawan : listKaryawan) {
+            for (ListDataKaryawan karyawan : listKaryawan) {
                 if (karyawan.getDepartemen().equals(cariDept)) {
                     System.out.println(karyawan.getNama());
                 }
             }
-            Restart(menu, listKaryawan);
+            restart();
         } else {
-            Restart(menu, listKaryawan);
+            restart();
         }
     }
 }
 
-class listDataKaryawan {
+class ListDataKaryawan {
     private int id;
     private String nama;
     private String departemen;
 
-    public listDataKaryawan(int id, String nama, String departemen) {
+    public ListDataKaryawan(int id, String nama, String departemen) {
         this.id = id;
         this.nama = nama;
         this.departemen = departemen;

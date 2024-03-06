@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Beranda();
+        beranda();
     }
 
-    public static void Beranda(){
+    public static void beranda(){
         Scanner scan = new Scanner(System.in);
         int menu = 0;
 
@@ -20,15 +20,15 @@ public class Main {
         if (menu!=0){
             switch (menu) {
                 case 1:
-                    listCollection.Beranda();
+                    ListCollection.beranda();
                     break;
 
                 case 2:
-                    HashSetCollection.Beranda();
+                    HashSetCollection.beranda();
                     break;
 
                 default:
-                    Beranda();
+                    beranda();
             }
         }
     }
