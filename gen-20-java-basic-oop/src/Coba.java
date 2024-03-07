@@ -1,20 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Coba {
     public static void main(String[] args) {
-        List<Integer> listA = new ArrayList<>();
-        listA.add(1);
-        listA.add(2);
-        listA.add(3);
+        Scanner scan = new Scanner(System.in);
+        int menu =0;
 
-        List<Integer> listB = new ArrayList<>();
-        listB.add(4);
-        listB.add(5);
+        menu = Exception.validasiInputInteger(scan);
 
-        // Memasukkan listA ke dalam listB
-        listB.addAll(listA);
+        if(menu != 0){
+            next();
+        }
+    }
 
-        System.out.println("List B setelah dimasukkan list A: " + listB);
+    public static void next(){
+        System.out.println("angka masuk");
     }
 }

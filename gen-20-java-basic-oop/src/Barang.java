@@ -31,7 +31,17 @@ class Makanan extends Barang{
         this.jumlah = jumlah;
     }
 
-    public int setJumlah(){
+    public void setJumlah(int jumlah){
+        this.jumlah = jumlah;
+    }
+
+    public void setHapus(){
+        this.nama = null;
+        this.harga = 0.0f;
+        this.jumlah = 0;
+    }
+
+    public int getJumlah(){
         return jumlah;
     }
 
@@ -47,7 +57,17 @@ class Minuman extends Barang{
         this.jumlah = jumlah;
     }
 
-    public int setJumlah(){
+    public void setJumlah(int jumlah){
+        this.jumlah = jumlah;
+    }
+
+    public void setHapus(){
+        this.nama = null;
+        this.harga = 0.0f;
+        this.jumlah = 0;
+    }
+
+    public int getJumlah(){
         return jumlah;
     }
 
@@ -63,7 +83,17 @@ class Obat extends Barang{
         this.jumlah = jumlah;
     }
 
-    public int setJumlah(){
+    public void setHapus(){
+        this.nama = null;
+        this.harga = 0.0f;
+        this.jumlah = 0;
+    }
+
+    public void setJumlah(int jumlah){
+        this.jumlah = jumlah;
+    }
+
+    public int getJumlah(){
         return jumlah;
     }
 
